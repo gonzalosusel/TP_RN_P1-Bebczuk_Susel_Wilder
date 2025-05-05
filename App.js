@@ -1,11 +1,41 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Button, Pressable, TextInput, Alert } from 'react-native';
+import { useState } from 'react';
 
 export default function App() {
+  let [user, setUser] = useState({
+    nombre: "",
+    telefono: "",
+    email: "",
+    clave: ""
+  });
+
+  const actualizar = (contenido, campo) => {
+    let userCopia = {...user};
+    userCopia[campo] = contenido;
+    setUser(userCopia);
+  }
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
       <StatusBar style="auto" />
+      <Text>Nombre:</Text>
+      <TextInput style={{border: "3px solid black"}} placeholder="Nombre" onChangeText={(c) => actualizar(c, "nombre")}/>
+
+      <Text>Teléfono:</Text>
+      <TextInput style={{border: "3px solid black"}} placeholder="Teléfono" onChangeText={(c) => actualizar(c, "telefono")}/>
+
+      <Text>Email:</Text>
+      <TextInput style={{border: "3px solid black"}} placeholder="Email" onChangeText={(c) => actualizar(c, "email")}/>
+
+      <Text>Clave:</Text>
+      <TextInput style={{border: "3px solid black"}} placeholder="Clave" onChangeText={(c) => actualizar(c, "clave")}/>
+
+      <Button title="Ver data" onPress={() => Alert.alert(user)}/>
+      <TouchableOpacity title="Ver data" onPress={() => Alert.alert(user)}/>
+      <Pressable onPress={() => Alert.alert(user)}>
+        <Text>Ver data</Text>
+      </Pressable>
     </View>
   );
 }
@@ -16,5 +46,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+
   },
 });
