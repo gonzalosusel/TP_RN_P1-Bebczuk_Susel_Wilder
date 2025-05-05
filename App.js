@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, Text, TouchableOpacity, Button, Pressable, TextInput, Alert } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Button, Pressable, TextInput, Alert, Platform } from 'react-native';
 import { useState } from 'react';
 
 export default function App() {
@@ -9,6 +9,8 @@ export default function App() {
     email: "",
     clave: ""
   });
+
+  const stringuser = () => `Nombre: ${user.nombre}, Telefono: ${user.telefono}, Email: ${user.email}, Clave: ${user.clave}`;
 
   const actualizar = (contenido, campo) => {
     let userCopia = {...user};
@@ -31,9 +33,9 @@ export default function App() {
       <Text>Clave:</Text>
       <TextInput style={{border: "3px solid black"}} placeholder="Clave" onChangeText={(c) => actualizar(c, "clave")}/>
 
-      <Button title="Ver data" onPress={() => Alert.alert(user)}/>
-      <TouchableOpacity title="Ver data" onPress={() => Alert.alert(user)}/>
-      <Pressable onPress={() => Alert.alert(user)}>
+      <Button title="Ver data" onPress={() => Alert.alert(stringuser())}/>
+      <TouchableOpacity title="Ver data" onPress={() => Alert.alert(stringuser())}/>
+      <Pressable onPress={() => Alert.alert(stringuser())}>
         <Text>Ver data</Text>
       </Pressable>
     </View>
