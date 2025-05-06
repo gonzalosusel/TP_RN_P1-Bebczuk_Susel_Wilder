@@ -11,23 +11,16 @@ export default function Formulario({user, setUser}){
     return (
     <View>
       <Text>Nombre:</Text>
-      <TextInput placeholder="Nombre" onChangeText={(c) => actualizar(c, "nombre")}/>
+      <TextInput placeholder="Nombre" onChangeText={c => actualizar(c, "nombre")}/>
 
       <Text>Teléfono:</Text>
-      <TextInput placeholder="Teléfono" onChangeText={(c) => actualizar(c, "telefono")}/>
+      <TextInput placeholder="Teléfono" onChangeText={c => actualizar(c, "telefono")}/>
 
       <Text>Email:</Text>
-      <TextInput placeholder="Email" onChangeText={(c) => actualizar(c, "email")}/>
+      <TextInput placeholder="Email" onChangeText={c => actualizar(c, "email")}/>
 
       <Text>Clave:</Text>
-      <TextInput placeholder="Clave" onChangeText={(c) => actualizar(c, "clave")}/>
-
-      <Button title="Ver data" onPress={() => Alert.alert(user)}/>
-      <TouchableOpacity title="Ver data" onPress={() => Alert.alert(user)}/>
-      <Pressable onPress={() => Alert.alert(user)}>
-        <Text>Ver data</Text>
-      </Pressable>
-
-      </View>
+      <TextInput placeholder="Clave" onChangeText={c => actualizar(c, "clave")}/>
+    </View>
     );
 }
